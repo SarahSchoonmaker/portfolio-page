@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, url_for, redirect
 from email.mime.text import MIMEText
 import smtplib
 from email.message import EmailMessage
+
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -16,8 +18,8 @@ def sendemail():
         email = request.form['_replyto']
         message = request.form['message']
 
-        your_name = "Ayush Kalla"
-        your_email = "ayushkalla2050@gmail.com"
+        your_name = "Sarah Schoonmaker"
+        your_email = "srschoonmaker@gmail.com"
         your_password = "pASSWORD@25243912524391"
 
         # Logging in to our email account
@@ -27,8 +29,8 @@ def sendemail():
         server.login(your_email, your_password)
 
         # Sender's and Receiver's email address
-        sender_email = "ayushkalla2050@gmail.com"
-        receiver_email = "akalla@stevens.edu"
+        sender_email = "srschoonmaker@gmail.com"
+        receiver_email = "srschoonmaker@gmail.com"
 
         msg = EmailMessage()
         msg.set_content("First Name : "+str(name)+"\nEmail : "+str(email)+"\nSubject : "+str(subject)+"\nMessage : "+str(message))
@@ -44,4 +46,5 @@ def sendemail():
     return redirect('/');
 
 if __name__ == "__main__":
-    app.run(debug=True)
+     app.run(port=4000, DEBUG=True)
+  
